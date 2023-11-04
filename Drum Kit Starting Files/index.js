@@ -8,6 +8,7 @@ for (let i = 0; i < document.querySelectorAll(".drum").length; i++) {
         // this.style.color="white";
         var buttonInnerHtml = this.innerHTML;
         makeSound(buttonInnerHtml);
+        buttonAnimation(buttonInnerHtml);
 
     });
 }
@@ -16,6 +17,7 @@ for (let i = 0; i < document.querySelectorAll(".drum").length; i++) {
 document.addEventListener("keypress", function (event)//event gives the objects that triggered the event
 {
     makeSound(event.key);
+    buttonAnimation(event.key);
 
 })
 
@@ -56,6 +58,18 @@ function makeSound(key) {
     }
 
 }
+
+function buttonAnimation(currentKey)
+{
+    var activeButton=document.querySelector("."+currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout(function()
+    {
+        activeButton.classList.remove("pressed");
+    },1000);
+
+}
+
 
 
 
